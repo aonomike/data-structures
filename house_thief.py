@@ -17,6 +17,9 @@ def house_thief_top_down(house_networth: list, current_index: int):
 
 def house_thief_bottom_up(house_networth: list, current_index: int):
     mem = {}
-    if current_index > len(house_networth):
-        return 0
-    mem[n+1] = 
+    mem[len(house_networth)] = mem[len(house_networth)] =0
+    
+    for i in range(len(house_networth), -1, -1):
+        if i not in mem:
+            mem[i] = max(house_networth[i] + mem[i+2], mem[i+1])
+    return mem[0]
