@@ -29,7 +29,7 @@ def two_num_sum(arr, target_sum):
     
 def two_num_sum(arr, target_sum):
     """
-    Brute-force 2: two for loops (0(n^2))
+    Brute-force 2: two for loops (0(n^2)) space o(1)
     not time optimal
 
     Args:
@@ -55,11 +55,11 @@ def two_num_sum(arr, target_sum):
             target_sum (int): _description_
         """
         seen ={}
-        for i in range(len(arr)): # o(n)
-            diff = target_sum - arr[i] # o(1)
+        for item in arr: # o(n)
+            diff = target_sum - item# o(1)
             
             if diff in seen: # o(1) -> the key (diff) is hashed then checked in the hashtable
-                return [arr[i], diff] # o(1) 
+                return [item, diff] # o(1) 
             seen[diff] = True # o(1) 
         return [] # o(1) 
     
@@ -71,16 +71,19 @@ def two_num_sum(arr, target_sum):
     If the sum is larger than target sum, decrement the larger index
     if the sum is smaller than the target sum, increment the smaller index
     break when the indices are equal
+    
+    Time complexity(o(n))
+    space complexity (o(1))
 
     Args:
         arr (list): _description_
         target_sum (int): _description_
     """
-    arr.sort()
+    arr.sort() #n log n
     start_index = 0
     end_index = len(arr) - 1
     
-    while start_index < end_index:
+    while start_index < end_index: # o(n)
         current_sum = arr[start_index] + arr[end_index]
         
         if current_sum > target_sum:
